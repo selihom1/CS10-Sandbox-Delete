@@ -41,7 +41,7 @@ rect(width*19/20, height*0, width*1/20, height*1/20);
 
 void draw() {
  
-color yellow = #FAFF03;
+color yellow = #FFF705;
   fill(yellow); 
   noStroke(); //outline of measles
   ellipse(random(width*0.6/8, width*1/8), random(height*10/40, height*30/40), measleDiameter, measleDiameter );
