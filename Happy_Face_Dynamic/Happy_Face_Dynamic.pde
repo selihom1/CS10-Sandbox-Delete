@@ -8,6 +8,13 @@ void setup() {
   size(500, 500);
   //fullscreen();
  
+ //Font Setup
+ //String[] fontList = PFont.list(); //To list all fonts available on system 
+ println("Start of Console");
+ //printArray(fontList); //For listing all possible fonts to choose, then createFont
+ 
+ quitButtonSetup();
+ 
  leftEyeX = width*1/4; 
  leftEyeY = height*1/4;
  eyeDiameter = width*1/8;
@@ -33,25 +40,25 @@ line(mouthLeftX, mouthLeftY, mouthRightX, mouthRightY);
 
 // Optional: ears, fill(),
 
-rect(width*19/20, height*0, width*1/20, height*1/20);
+rect(width*19/20, height*0, width*1/20, height*1/20); //Quit Button
 
 //noLoop();
 
 }
 
 void draw() {
- 
+ quitButtonDraw();
+  
 color yellow = #FFF705;
   fill(yellow); 
   noStroke(); //outline of measles
-  ellipse(random(width*0.6/8, width*1/8), random(height*10/40, height*30/40), measleDiameter, measleDiameter );
-   ellipse(random(width*1/8, width*2/8), random(height*10/40, height*30/40), measleDiameter, measleDiameter );
-  ellipse(random(width*2/8, width*3/8), random(height*3/40, height*39/40), measleDiameter, measleDiameter );
-  ellipse(random(width*3/8, width*5/8), random(height*1/40, height*39/40), measleDiameter, measleDiameter );
- ellipse(random(width*5/8, width*6/8), random(height*11/40, height*39/40), measleDiameter, measleDiameter );
- ellipse(random(width*6/8, width*7/8), random(height*11/40, height*38/40), measleDiameter, measleDiameter );
- ellipse(random(width*7/8, width*7.5/8), random(height*11/40, height*31/40), measleDiameter, measleDiameter );
- 
+  ellipse(random(width*0.6/8, width*1/8), random(height*10/40, height*30/40), measleDiameter, measleDiameter);
+  ellipse(random(width*1/8, width*2/8), random(height*6/40, height*34/40), measleDiameter, measleDiameter);
+  ellipse(random(width*2/8, width*3/8), random(height*3/40, height*37/40), measleDiameter, measleDiameter);
+  ellipse(random(width*3/8, width*5/8), random(height*1/40, height*39/40), measleDiameter, measleDiameter);
+  ellipse(random(width*5/8, width*6/8), random(height*3/40, height*37/40), measleDiameter, measleDiameter);
+  ellipse(random(width*6/8, width*7/8), random(height*6/40, height*34/40), measleDiameter, measleDiameter);
+  ellipse(random(width*7/8, width*7.5/8), random(height*9/40, height*31/40), measleDiameter, measleDiameter);
   fill(255); //defaulf, gray scale
   stroke(1); //default
 
