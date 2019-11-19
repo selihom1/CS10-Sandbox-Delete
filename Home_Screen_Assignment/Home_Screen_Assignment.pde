@@ -64,8 +64,8 @@ button2Y = height *2/6;
 button2Width = width * 1/3 *1/2;
 button2Height = height *1/3 *1/2;
 //
-button3X = width *11/15;
-button3Y = height *14/16;
+button3X = width *12/15;
+button3Y = height *13/16;
 button3Width = width * 1/3 *1/5;
 button3Height = height *1/3 *1/5;
 
