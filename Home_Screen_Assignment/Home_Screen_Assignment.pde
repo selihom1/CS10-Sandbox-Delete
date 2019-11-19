@@ -36,7 +36,7 @@ float pt16Y;
 float button1X, button1Y, button1Width, button1Height;
 float button2X, button2Y, button2Width, button2Height;
 float button3X, button3Y, button3Width, button3Height;
-
+float button4X, button4Y, button4Width, button4Height;
 
 void setup() {
   size(500,500);
@@ -68,6 +68,11 @@ button3X = width *12/15;
 button3Y = height *13/16;
 button3Width = width * 1/3 *1/5;
 button3Height = height *1/3 *1/5;
+//
+button4X = width *11/5;
+button4Y = height *1/15;
+button4Width = width *3/15;
+button4Height = height *3/15;
 
 }
 
@@ -76,7 +81,7 @@ void draw() {
    rect(pt1X, pt1Y, rectWidth, rectHeight);
   rect(pt2X, pt2Y, rectWidth, rectHeight);
   rect(pt3X, pt3Y, rectWidth, rectHeight);
-  //
+//
   rect(pt5X, pt5Y, rectWidth, rectHeight);
   rect(pt6X, pt6Y, rectWidth, rectHeight);
   rect(pt7X, pt7Y, rectWidth, rectHeight);
@@ -98,6 +103,7 @@ void draw() {
   ellipse(pt7X, pt7Y, ptDiameter, ptDiameter);
   //
   fill(blue);
+  rect(pt4X, pt4Y, button4Width, button4Height);
   ellipse(pt9X, pt9Y, ptDiameter, ptDiameter);
   ellipse(pt10X, pt10Y, ptDiameter, ptDiameter);
   ellipse(pt11X, pt11Y, ptDiameter, ptDiameter);
@@ -118,7 +124,19 @@ void draw() {
 }
 
 void mousePressed() {
-  if (mouseX >= width*19/20  && mouseX <= width && mouseY >= height*0 && mouseY <= height*1/20) {
-    exit();
+  
+if ( mouseX>=button1X && mouseX<=button1X+button1Width && mouseY>=button1Y && mouseY<=button1Y+button1Height) {
+    println("Btn activated");
   }
+if ( mouseX>=button2X && mouseX<=button2X+button2Width && mouseY>=button2Y && mouseY<=button2Y+button2Height) {
+    println("Btn activated");
 }
+  if ( mouseX>=button3X && mouseX<=button3X+button3Width && mouseY>=button3Y && mouseY<=button3Y+button3Height) {
+    println("Btn activated");
+  }
+  if ( mouseX>=button4X && mouseX<=button4X+button4Width && mouseY>=button4Y && mouseY<=button4Y+button4Height) {
+    println("Btn activated");
+  }
+  
+  
+} 
