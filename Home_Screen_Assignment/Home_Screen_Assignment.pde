@@ -59,15 +59,15 @@ button1Y = height *1/3 * 1/3;
 button1Width = width * 1/3 *1/3;
 button1Height = height *1/3 *1/3;
 //
-button2X = width *2/3 * 2/3;
-button2Y = height *2/3 * 2/3;
-button2Width = width * 2/3 *2/2;
-button2Height = height *2/3 *2/3;
+button2X = width *3/6;
+button2Y = height *2/6;
+button2Width = width * 1/3 *1/2;
+button2Height = height *1/3 *1/2;
 //
-button3X = width *3/3 * 2/5;
-button3Y = height *3/3 * 4/5;
-button3Width = width * 3/3 *2/5;
-button3Height = height *3/3 *4/5;
+button3X = width *11/15;
+button3Y = height *14/16;
+button3Width = width * 1/3 *1/5;
+button3Height = height *1/3 *1/5;
 
 }
 
