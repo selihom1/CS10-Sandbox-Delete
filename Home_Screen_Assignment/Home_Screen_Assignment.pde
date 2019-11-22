@@ -1,6 +1,6 @@
 //Global Variables
-color black =#0A0A0A, white =255, yellow =#FFF300, green =#0AFF24, blue =#0A20FF, pink =#FF0AC2, red =#FC0D11;
-Boolean turnOnYellow =false, turnOnPink =false, turnOnGreen =false;
+color black =#0A0A0A, brown =#FA750F, white =255, yellow =#FFF300, green =#0AFF24, blue =#0A20FF, pink =#FF0AC2, red =#FC0D11, purple=#CE0FFA, orange =#FA810F, lime =#A7FA0F;
+Boolean turnOnYellow =false, turnOnPink =false, turnOnGreen =false, turnOnRed =false,  turnOnPurple =false, turnOnOrange =false, turnOnBrown =false, turnOnlime =false;
 float ptDiameter, rectWidth, rectHeight;
 float pt1X, pt1Y, pt2X, pt2Y, pt3X, pt3Y, pt4X, pt4Y, pt5X, pt5Y;
 float pt6X, pt6Y, pt7X, pt7Y, pt8X, pt8Y, pt9X, pt9Y, pt10X, pt10Y;
@@ -15,13 +15,6 @@ float button6X, button6Y, button6Width, button6Height;
 float button7X, button7Y, button7Width, button7Height;
 float button8X, button8Y, button8Width, button8Height;
 float button9X, button9Y, button9Width, button9Height;
-float button10X, button10Y, button10Width, button10Height;
-float button11X, button11Y, button11Width, button11Height;
-float button12X, button12Y, button12Width, button12Height;
-float button13X, button13Y, button13Width, button13Height;
-float button14X, button14Y, button14Width, button14Height;
-float button15X, button15Y, button15Width, button15Height;
-float button16X, button16Y, button16Width, button16Height;
 
 void setup() {
   size(500,500);
@@ -46,7 +39,7 @@ button1Width = width * 1/3 *1/3;
 button1Height = height *1/3 *1/3;
 //
 //Button to illustrate arithemtic
-button2X = width *3/6; //Section 2, subsection 1: denominator is 3*2, numerator is counted
+button2X = width *1/6; //Section 2, subsection 1: denominator is 3*2, numerator is counted
   button2Y = height *2/6; //Section 2, subsection 0: denominator is 3*2, numerator is counted                 
 button2Width = width * 1/3 *1/2;
 button2Height = height *1/3 *1/2;
@@ -59,18 +52,18 @@ button3Height = height *1/3 *1/5;
 //
 //Button to iilustrate arithemtic
 button4X = width *11/15; //Section 4, subsection 3: denominator is 3*5, numerator is counted
-button4Y = height *11/15; //Section 4, subsection 5: denominator is 3*5, numerator is counted
+button4Y = height *1/15; //Section 4, subsection 5: denominator is 3*5, numerator is counted
 button4Width = width *3/15;
 button4Height = height *3/15;
 //
 //Button to iilustrate arithemtic
-button5X = width *1/15; //Section 5, subsection 4: denominator is 3*5, numerator is counted
-button5Y = height *13/16; //Section 5, subsection 6: denominator is 3*5, numerator is counted
-button5Width = width * 1/3 *1/5;
-button5Height = height *1/3 *1/5;
+button5X = width *1/2; //Section 5, subsection 4: denominator is 3*5, numerator is counted
+button5Y = height *2/4; //Section 5, subsection 6: denominator is 3*5, numerator is counted
+button5Width = width * 1/3 *2/7;
+button5Height = height *1/3 *3/9;
 //
 //Button to iilustrate arithemtic
-button6X = width *12/15; //Section 6, subsection 5: denominator is 3*5, numerator is counted
+button6X = width *1/1; //Section 6, subsection 5: denominator is 3*5, numerator is counted
 button6Y = height *13/16; //Section 6, subsection 7: denominator is 3*5, numerator is counted
 button6Width = width * 1/3 *1/5;
 button6Height = height *1/3 *1/5;
@@ -98,7 +91,6 @@ button9Height = height *1/3 *1/5;
 
 void draw() {
 //fill(white);
-rect(pt1X, pt1Y, rectWidth, rectHeight);
 //Bug: must press reset, Btn#4,each time to reset colour
 if (turnOnYellow == true) {
   fill(yellow);
@@ -107,10 +99,27 @@ if (turnOnGreen == true) {
   fill(green);
 }
 
-   if (turnOnPink == true) {
-    fill(pink);
+if (turnOnRed == true) {
+  fill(red);
+}
+
+   if (turnOnPurple == true) {
+    fill(purple);
 } 
-  rect(pt2X, pt2Y, rectWidth, rectHeight);
+
+ if (turnOnOrange == true) {
+    fill(orange);
+} 
+
+ if (turnOnBrown == true) {
+    fill(brown);
+} 
+
+ if (turnOnlime == true) {
+    fill(black);
+} 
+ 
+ 
   fill(white);
   rect(pt3X, pt3Y, rectWidth, rectHeight);
 //
@@ -132,14 +141,14 @@ if (turnOnGreen == true) {
     rect(button1X, button1Y, button1Width, button1Height);
   }
   if ( mouseX>=button2X && mouseX<=button2X+button2Width && mouseY>=button2Y && mouseY<=button2Y+button2Height) {
-   fill(yellow);
+   fill(pink);
    rect(button2X, button2Y, button2Width, button2Height);
   } else {
     fill(black);
     rect(button2X, button2Y, button2Width, button2Height);
   }
    if ( mouseX>=button3X && mouseX<=button3X+button3Width && mouseY>=button3Y && mouseY<=button3Y+button3Height) {
-    fill(yellow);
+    fill(green);
     rect(button3X, button3Y, button3Width, button3Height);
   } else {
     fill(black);
@@ -147,16 +156,65 @@ if (turnOnGreen == true) {
   
   }
   if ( mouseX>=button4X && mouseX<=button4X+button4Width && mouseY>=button4Y && mouseY<=button4Y+button4Height) {
-    fill(yellow);
+    fill(red);
     rect(button4X, button4Y, button4Width, button4Height);
   } else {
     fill(black);
     rect(button4X, button4Y, button4Width, button4Height);
   }
+  if ( mouseX>=button5X && mouseX<=button5X+button5Width && mouseY>=button5Y && mouseY<=button5Y+button5Height) {
+    fill(purple);
+    rect(button5X, button5Y, button5Width, button5Height);
+  } else {
+    fill(black);
+    rect(button5X, button5Y, button5Width, button5Height);
+    }
+  
+  if ( mouseX>=button6X && mouseX<=button6X+button6Width && mouseY>=button6Y && mouseY<=button6Y+button6Height) {
+    fill(orange);
+    rect(button6X, button6Y, button6Width, button6Height);
+  } else {
+    fill(black);
+    rect(button6X, button6Y, button6Width, button6Height);
+  }
+  
+  if ( mouseX>=button7X && mouseX<=button7X+button7Width && mouseY>=button7Y && mouseY<=button7Y+button7Height) {
+    fill(brown);
+    rect(button7X, button7Y, button7Width, button7Height);
+  } else {
+    fill(black);
+    rect(button7X, button7Y, button7Width, button7Height);
+  }
+  
+  if ( mouseX>=button8X && mouseX<=button8X+button8Width && mouseY>=button8Y && mouseY<=button8Y+button8Height) {
+    fill(lime);
+    rect(button8X, button8Y, button8Width, button8Height);
+  } else {
+    fill(black);
+    rect(button8X, button8Y, button8Width, button8Height);
+  }
+  
+  if ( mouseX>=button9X && mouseX<=button9X+button9Width && mouseY>=button9Y && mouseY<=button9Y+button9Height) {
+    fill(yellow);
+    rect(button9X, button9Y, button9Width, button9Height);
+  } else {
+    fill(black);
+    rect(button9X, button9Y, button9Width, button9Height);
+  }
+  
   fill(black); //Reset all If-Else
   //
    
-  rect( button2X, button2Y, button2Width, button2Height);
+ rect( button1X, button1Y, button1Width, button1Height);
+  rect(button2X, button2Y, button2Width, button2Height);
+ rect (button3X, button3Y, button3Width, button3Height);
+ rect (button4X, button4Y, button4Width, button4Height);
+ rect (button5X, button5Y, button5Width, button5Height);
+  rect (button6X, button6Y, button6Width, button6Height);
+  rect (button7X, button7Y, button7Width, button7Height);
+ rect (button8X, button8Y, button8Width, button8Height);
+ rect (button9X, button9Y, button9Width, button9Height);
+ 
   ellipse(pt1X, pt1Y, ptDiameter, ptDiameter);
   ellipse(pt2X, pt2Y, ptDiameter, ptDiameter);
   ellipse(pt3X, pt3Y, ptDiameter, ptDiameter);
@@ -204,8 +262,36 @@ if ( mouseX>=button2X && mouseX<=button2X+button2Width && mouseY>=button2Y && mo
   }
   if ( mouseX>=button4X && mouseX<=button4X+button4Width && mouseY>=button4Y && mouseY<=button4Y+button4Height) {
     println("Btn activated");
+    turnOnRed = true;
+    
+  }
+ if ( mouseX>=button5X && mouseX<=button5X+button5Width && mouseY>=button5Y && mouseY<=button5Y+button5Height) {
+    println("Btn activated");
+    turnOnPurple = true;
+}
+if ( mouseX>=button6X && mouseX<=button6X+button2Width && mouseY>=button6Y && mouseY<=button6Y+button2Height) {
+    println("Btn activated");
+    turnOnOrange = true;
+}
+if ( mouseX>=button7X && mouseX<=button7X+button7Width && mouseY>=button7Y && mouseY<=button7Y+button7Height) {
+    println("Btn activated");
+    turnOnBrown = true;
+}
+if ( mouseX>=button8X && mouseX<=button8X+button8Width && mouseY>=button8Y && mouseY<=button8Y+button8Height) {
+    println("Btn activated");
+    turnOnlime = true;
+}
+if ( mouseX>=button9X && mouseX<=button9X+button9Width && mouseY>=button9Y && mouseY<=button9Y+button9Height) {
+    println("Btn activated");
     turnOnYellow = false;
     turnOnPink = false;
     turnOnGreen = false;
-  }
+    turnOnRed = false;
+    turnOnPurple = false;
+    turnOnOrange = false;
+    turnOnBrown = false;
+    turnOnlime = false;
+   
+}
+  
 }
