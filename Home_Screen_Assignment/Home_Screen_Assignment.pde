@@ -216,8 +216,7 @@ rect(button7X, button7Y, button7Width, button7Height);
   
   fill(black); //Reset all If-Else
   //
-   
- 
+   rect (button2X, button2Y, button2Width, button2Height);
   ellipse(pt1X, pt1Y, ptDiameter, ptDiameter);
   ellipse(pt2X, pt2Y, ptDiameter, ptDiameter);
   ellipse(pt3X, pt3Y, ptDiameter, ptDiameter);
