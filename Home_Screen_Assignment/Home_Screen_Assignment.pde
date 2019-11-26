@@ -40,7 +40,7 @@ button1Height = height *1/3 *1/3;
 //
 //Button to illustrate arithemtic
 button2X = width *1/6; //Section 2, subsection 1: denominator is 3*2, numerator is counted
-  button2Y = height *2/6; //Section 2, subsection 0: denominator is 3*2, numerator is counted                 
+  button2Y = height *2/6; //Section 2, subsection 3: denominator is 3*2, numerator is counted                 
 button2Width = width * 1/3 *1/2;
 button2Height = height *1/3 *1/2;
 //
@@ -57,40 +57,40 @@ button4Width = width *3/15;
 button4Height = height *3/15;
 //
 //Button to iilustrate arithemtic
-button5X = width *1/2; //Section 5, subsection 4: denominator is 3*5, numerator is counted
-button5Y = height *2/4; //Section 5, subsection 6: denominator is 3*5, numerator is counted
-button5Width = width * 1/3 *2/7;
+button5X = width *1/2; //Section 5, subsection 4: denominator is 3*5, numerator is countedbutton5Y = height *2/4;
+button5Width = width * 1/3 *2/7;//Section 5, subsection 6: denominator is 3*5, numerator is counted
 button5Height = height *1/3 *3/9;
 //
 //Button to iilustrate arithemtic
 button6X = width *1/1; //Section 6, subsection 5: denominator is 3*5, numerator is counted
 button6Y = height *13/16; //Section 6, subsection 7: denominator is 3*5, numerator is counted
-button6Width = width * 1/3 *1/5;
-button6Height = height *1/3 *1/5;
+button6Width = width * 1/3;
+button6Height = height *1/3;
 //
 //Button to iilustrate arithemtic
-button7X = width *12/15; //Section 7, subsection 6: denominator is 3*5, numerator is counted
-button7Y = height *13/16; //Section 7, subsection 8: denominator is 3*5, numerator is counted
-button7Width = width * 1/3 *1/5;
-button7Height = height *1/3 *1/5;
+button7X = width *13/15; //Section 7, subsection 6: denominator is 3*5, numerator is counted
+button7Y = height *11/16; //Section 7, subsection 8: denominator is 3*5, numerator is counted
+button7Width = width * 1/3 * 1/6;
+button7Height = height *1/3 *1/6; 
 //
 //Button to iilustrate arithemtic
-button8X = width *12/15; //Section 8, subsection 7: denominator is 3*5, numerator is counted
-button8Y = height *13/16; //Section 8, subsection 9: denominator is 3*5, numerator is counted
-button8Width = width * 1/3 *1/5;
-button8Height = height *1/3 *1/5;
+button8X = width *11/22; //Section 8, subsection 7: denominator is 3*5, numerator is counted
+button8Y = height *12/16; //Section 8, subsection 9: denominator is 3*5, numerator is counted
+button8Width = width * 1/2 * 2/6;
+button8Height = height *1/2 * 2/6;
 //
 //Last Button to Test Concept of Buttons
-button9X = width *12/15; //Section 9, subsection 8: denominator is 3*5, numerator is counted
-button9Y = height *13/16; //Section 9, subsection 10: denominator is 3*5, numerator is counted
-button9Width = width * 1/3 *1/5;
-button9Height = height *1/3 *1/5;
+button9X = width *11/15; //Section 9, subsection 8: denominator is 3*5, numerator is counted
+button9Y = height *5/15; //Section 9, subsection 10: denominator is 3*5, numerator is counted
+button9Width = width * 3/15;
+button9Height = height *3/15;
 
 
 }
 
 void draw() {
 //fill(white);
+rect( button1X, button1Y, button1Width, button1Height);
 //Bug: must press reset, Btn#4,each time to reset colour
 if (turnOnYellow == true) {
   fill(yellow);
@@ -119,7 +119,7 @@ if (turnOnRed == true) {
     fill(black);
 } 
  
- 
+ rect( button2X, button2Y, button2Width, button2Height);
   fill(white);
   rect(pt3X, pt3Y, rectWidth, rectHeight);
 //
@@ -127,11 +127,23 @@ if (turnOnRed == true) {
   rect(pt6X, pt6Y, rectWidth, rectHeight);
   rect(pt7X, pt7Y, rectWidth, rectHeight);
   //
+  
   rect(pt9X, pt9Y, rectWidth, rectHeight);
   rect(pt10X, pt10Y, rectWidth, rectHeight);
   rect(pt11X, pt11Y, rectWidth, rectHeight);
   //
+  fill(green);
+  rect(button1X, button1Y, button1Width, button1Height);
+rect(button2X, button2Y, button2Width, button2Height);
+rect(button3X, button3Y, button3Width, button3Height);
+rect(button4X, button4Y, button4Width, button4Height);
+rect(button5X, button5Y, button5Width, button5Height);
+ rect(button6X, button6Y, button6Width, button6Height);
+rect(button7X, button7Y, button7Width, button7Height);
+ rect(button8X, button8Y, button8Width, button8Height);
+
   //Button Rectangles
+  rect( button1X, button1Y, button1Width, button1Height);
   if ( mouseX>=button1X && mouseX<=button1X+button1Width && mouseY>=button1Y && mouseY<=button1Y+button1Height) {
   fill(yellow);
   rect(button1X, button1Y, button1Width, button1Height);
@@ -205,15 +217,6 @@ if (turnOnRed == true) {
   fill(black); //Reset all If-Else
   //
    
- rect( button1X, button1Y, button1Width, button1Height);
-  rect(button2X, button2Y, button2Width, button2Height);
- rect (button3X, button3Y, button3Width, button3Height);
- rect (button4X, button4Y, button4Width, button4Height);
- rect (button5X, button5Y, button5Width, button5Height);
-  rect (button6X, button6Y, button6Width, button6Height);
-  rect (button7X, button7Y, button7Width, button7Height);
- rect (button8X, button8Y, button8Width, button8Height);
- rect (button9X, button9Y, button9Width, button9Height);
  
   ellipse(pt1X, pt1Y, ptDiameter, ptDiameter);
   ellipse(pt2X, pt2Y, ptDiameter, ptDiameter);
