@@ -19,26 +19,69 @@ import ddf.minim.ugens.*;
 // Global Variables
 Minim minim;
 AudioPlayer song1;
+AudioMetaData songMetaData1;
+int loopNum = 1; //Able to connect this variable to buttons, increasing the loop number
 
 void setup() {
-minim = new Minim(this);
-//load from data directory, loadFile should also load from project floder
-song1 = minim. loadFile("End_of_Summer.mp3");
+  minim = new Minim(this);
+  //load from data directory, loadFile should also load from project folder
+  song1 = minim.loadFile("groove.mp3");
+  songMetaData1 = song1.getMetaData();
+  
+  //Instructions
+  println("Start of Console");
+  println("Click the Canvas to Finish Starting this program");
+  println("Press P to Play and Pause, will rewind when at the end");
+  println("Press S to Stop and rewind to the beginning");
+  println("Press L to loop the song");
+  
+  //Verifying Meta data
+  println("File Name: ",songMetaData1.fileName() );
+  println("Length (in milliseconds): ", songMetaData1.length() );
+  println("Length (in seconds): ", songMetaData1.length()/100 );
+  println("Title: ", songMetaData1.title() ); 
+  println("Author: ", songMetaData1.author() );//Song Writer or Performer 
+  println("Composer: ", songMetaData1.composer() ); //Song Writer
+   println("Orchestra: ", songMetaData1.orchestra()); 
+  println("Album: ", songMetaData1.album() );
+  println("Disk: ", songMetaData1.disc() );
+  println("Publisher: ", songMetaData1.publisher() ); 
+  println("Date Release: ", songMetaData1.date() );
+  println("Copyright: ", songMetaData1.copyright() );
+  println("Comment: ", songMetaData1.comment() );
+  println("Lyrics: ", songMetaData1.lyrics() );
+  println("Track: ", songMetaData1.track() );
+  println("Genre: ", songMetaData1.genre() );
+  println("Encoded: ", songMetaData1.encoded() ); 
 }
 
-void draw() {}
+void draw() {
+}
 
 void keyPressed() {
- if (key == 'p') {
-   if (song1.isPlaying() ) {
-   song1.pause();
-} else if (song1.position() == song1.length() ) {
-  song1.rewind();
-  song1.play();
-} else {
-  song1.play();
-}
- }
+  if ( key == 'p' || key == 'P' ) { //Caps lock can be on
+    if ( song1.isPlaying() ) {
+      song1.pause();
+    } else if ( song1.position() == song1.length() ) {
+      song1.rewind();
+      song1.play();
+    } else {
+      song1.play();
+    }
+  }
+  //
+  if (key == 's' || key == 'S') {
+    if ( song1.isPlaying() ) {
+      song1.pause();
+      song1.rewind();
+    } else { //Song is not Playing
+      song1.rewind();
+    }
+  }
+  //
+  if( key == 'l' || key == 'L' ) song1.loop(loopNum);//Single line IF
+  //"L" Automatically loops the song, and starts playing from the beginning
 }
 
-void mousePressed() {}
+void mousePressed() {
+}
