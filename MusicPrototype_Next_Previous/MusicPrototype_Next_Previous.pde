@@ -23,35 +23,44 @@ song[2] = minim.loadFile("End_of_Summer.mp3");
   println("Press P to Play and Pause, will rewind when at the end");
   
 }
-void draw() {}
 
- void mousePressed() {} 
- 
- void keyPressed() {
- int currentSong = 1;
- if (key == 'n' || key == 'N') { //Next-Back Code
- if ( song[currentSong].isPlaying()  ) {
-   song[currentSong].pause()
-   song[currentSong].rewind();
-   currentSong = currentSong +1;
-   song[currentSong].play();
- } else {
-   currentSong = currentSong +1;
-   println(currentSong);
- }
- }
- //
- //if (key == b || key == B) {} // Next-Back Code
- if ( key == 'p' || key == 'P' ) { 
+void draw() {
+}
+
+void mousePressed() {
+} 
+
+void keyPressed() {
+  if (key == 'n' || key == 'N') { //Next-Back Code
     if ( song[currentSong].isPlaying() ) {
       song[currentSong].pause();
-    } else if ( song[currentSong].position() == song1.length() ) {
       song[currentSong].rewind();
-      if (currentSong == numberOfSong -1){
+      if ( currentSong == numberOfSong - 1) {
+        currentSong = currentSong - (numberOfSong-1);
       } else {
+        currentSong = currentSong + 1;
+      }
+      println(currentSong);
+      song[currentSong].play();
+    } else {
+      if ( currentSong == numberOfSong - 1) {
+        currentSong = currentSong - (numberOfSong);
+      }
+      currentSong = currentSong + 1;
+    }
+  } 
+  //
+  //if (key == b || key == B) {} //Next-Back Code
+  //
+  if (key == 'p' || key == 'P') {
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+    } else { if ( song[currentSong].position() == song[currentSong].length() ) {
+      song[currentSong].rewind();
       song[currentSong].play();
     } else {
       song[currentSong].play();
     }
- }
- }
+  }
+  }
+}
