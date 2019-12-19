@@ -22,7 +22,8 @@ song[1] = minim.loadFile("End_of_the_Rainbow.mp3");
 song[2] = minim.loadFile("End_of_Summer.mp3");
 //
 SoundEffects[0] = minim.loadFile("Air_Nailer_Wood.mp3");
-SoundEffects[1] = minim.loadFile("Baseball_Glove_Handling.mp3");
+SoundEffects[1] = minim.loadFile("Alien_Breath.mp3");
+SoundEffects[2] = minim.loadFile("Baseball_Glove_Handling.mp3");
 //
  println("Start of Console");
   println("Click the Canvas to Finish Starting this program");
@@ -69,5 +70,9 @@ void keyPressed() {
     }
   }
   }
-
+  if (key == 'q' || key == 'Q') { //Quit Code 
+  soundEffects[0].play();
+  soundEffects[0].rewind();
+  exit();
+  {
 }

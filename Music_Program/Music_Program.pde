@@ -13,21 +13,29 @@ Air_Nailer_Wood.mp3
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
-import ddf.minim.signals.*;
+import ddf.minim.signals;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
 // Global Variables
 Minim minim;
-AudioPlayer song1;
-AudioMetaData songMetaData1;
-int loopNum = 1; //Able to connect this variable to buttons, increasing the loop number
+int numberOfSong = 3;
+int numberOfSoundEffects = 1;
+AudioPlayer[] song = new AudioPlayer[numberOfSong];
+AudioPlayer[] SoundEffects = new AudioPlayer[numberOfSoundEffects];
+int currentSong = numberOfSong - numberOfSong; //Zero starting index
+int currentSoundEffect = numberOfSoundEffects - numberOfSoundEffects; //Zero starting index
+AudioMetaData songMetaData1; //Able to connect this variable to buttons, increasing the loop number
+
 
 void setup() {
   minim = new Minim(this);
   //load from data directory, loadFile should also load from project folder
   song1 = minim.loadFile("Every_Step.mp3");
   songMetaData1 = song1.getMetaData();
+  // 
+  SoundEffects1 = minim.loadFile("Baseball_Glove_Handling.mp3");
+  SoundEffectsMetaData1 = SoundEffects1.getMetaData();
   
   //Instructions
   println("Start of Console");
@@ -83,6 +91,12 @@ void keyPressed() {
   //
   if( key == 'l' || key == 'L' ) song1.loop(loopNum);//Single line IF
   //"L" Automatically loops the song, and starts playing from the beginning
+}
+if (key == 'q' || key == 'Q') { // Quit Code 
+SoundEffects[0].play();
+SoundEffects[0].rewind();
+exit();
+
 }
 
 void mousePressed() {
