@@ -33,9 +33,6 @@ void setup() {
   //load from data directory, loadFile should also load from project folder
   song1 = minim.loadFile("Every_Step.mp3");
   songMetaData1 = song1.getMetaData();
-  // 
-  SoundEffects1 = minim.loadFile("Baseball_Glove_Handling.mp3");
-  SoundEffectsMetaData1 = SoundEffects1.getMetaData();
   
   //Instructions
   println("Start of Console");
