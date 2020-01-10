@@ -1,4 +1,15 @@
 
+// Music Program
+/* Music Files
+ End_of_Summer.mp3
+ End_of_the_Rainbow.mp3
+ Every_Step.mp3
+ */
+/* Sound Effects
+ Baseball_Glove_Handling.mp3
+Alien_Breath.mp3
+Air_Nailer_Wood.mp3
+ */
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
@@ -6,184 +17,65 @@ import ddf.minim.signals.*;
 import ddf.minim.spi.*;
 import ddf.minim.ugens.*;
 
-// Global Variables
-color green = #3FFA03;
-color lighterGreen = #45E810;
-color lighterGrey = #1F211F; 
-color grey = #3E403D;
-color coolpurple = #67096C;
-color lightPurple = #D651DE;
-color white = #FFFFFF;
-color orange = #F0551D;
-color lightBlue = #23F5D7;
-
-color bColor = color( 500, 500, 500);
-
+//Global Variables
 Minim minim;
-int numberOfSong = 3;
-AudioPlayer[] song = new AudioPlayer[numberOfSong];
-int currentSong = numberOfSong - numberOfSong; //Zero starting index
+int numberOfSongs = 4;
+int numberOfSoundEffects = 1;
+AudioPlayer[] song = new AudioPlayer[numberOfSongs];
+AudioPlayer[] soundEffect = new AudioPlayer[numberOfSoundEffects];
+int currentSong = numberOfSongs - numberOfSongs; //Zero starting index
+int currentSoundEffect = numberOfSoundEffects - numberOfSoundEffects; //Zero starting index
+AudioMetaData songMetaData1; //needs to be an array
+int loopNum = 1; //Able to connect this variable to buttons, increasing the loop number
 
-boolean play;
+void setup() {
+  minim = new Minim(this);
+  //load from data directory, loadFile should also load from project folder
+  song[0] = minim.loadFile(" End_of_Summer.mp3");
+  song[1] = minim.loadFile("End_of_the_Rainbow.mp3");
+  song[2] = minim.loadFile("Every_Step.mp3");
+  songMetaData1 = song[0].getMetaData();
+  //
+  soundEffect[0] = minim.loadFile("Sound Effects/Air_Nailer_Wood.mp3");
 
-
-
-
-void setup() { 
-  size(500, 500);
-  //fullscreen();
-  
-minim = new Minim(this);
-
-minim = new Minim(this);
-song[0] = minim.loadFile("Every_Step.mp3");
-song[1] = minim.loadFile("End_of_the_Rainbow.mp3");
-song[2] = minim.loadFile("End_of_Summer.mp3");
-
-println("start of console");
-println("Click th canvas to finish starting this program");
-println("press p to play and pause");
-  
- //Using WIDTH and HEIGHT Key Varaibles, communciaiton to the display Geometry
-  //String[] fontList = PFont.list(); //To list all fonts available on system
+  //Instructions
   println("Start of Console");
-  //printArray(fontList); //For listing all possible fonts to choose, then createFont
-  titleFont = createFont ("Harrington", 55); //Must also Tools / Create Font / Find Font / Do Not Press "OK"
-
-  quitButtonSetup();
-
+  println("Click the Canvas to Finish Starting this program");
+  println("Press P to Play and Pause, will rewind when at the end");
+  println("Press S to Stop and rewind to the beginning");
+  println("Press L to loop the song");
+  //
+  //Verifying Meta Data
+  //Always available
+  println( "File Name: ", songMetaData1.fileName() );
+  println( "Length (in milliseconds): ", songMetaData1.length() );
+  println( "Length (in seconds): ", songMetaData1.length()/1000 );
+  println( "Length (in minutes & seconds): ", (songMetaData1.length()/1000)/60, " minute", (songMetaData1.length()/1000)-((songMetaData1.length()/1000)/60 * 60), " seconds" );
+  //Sometimes available
+  println( "Title: ", songMetaData1.title() );
+  println( "Author: ", songMetaData1.author() ); //Song Writer or Performer
+  println( "Composer: ", songMetaData1.composer() ); //Song Writer
+  println( "Orchestra: ", songMetaData1.orchestra() );
+  println( "Album: ", songMetaData1.album() );
+  println( "Disk: ", songMetaData1.disc() );
+  println( "Publisher: ", songMetaData1.publisher() );
+  println( "Date Release: ", songMetaData1.date() );
+  println( "Copyright: ", songMetaData1.copyright() );
+  println( "Comment: ", songMetaData1.comment() );
+  println( "Lyrics: ", songMetaData1.lyrics() );
+  println( "Track: ", songMetaData1.track() );
+  println( "Genre: ", songMetaData1.genre() );
+  println( "Encoded: ", songMetaData1.encoded() ); //how a computer reads the file
+  //Catch for Null Variables inside TAB, advanced skil;
+  println("\nRepeating Code Example");
+  repeatingCode(songMetaData1);
 }
 
 void draw() {
-  background(bColor);
-  bColor = (color) random(0x1000000) |0xff000000;
-  quitButtonDraw();
-  rect(27, 70, 450, 450, 50);
-  fill(lighterGrey);
-  noStroke();
-  rect(53, 95, 400, 400, 45);
-  stroke(1);
-  fill(grey);
-  ellipse(250, 300, 350, 350);
-  fill(green);
-  noStroke();
-  ellipse(250, 300, 323, 323);
-  ellipse(250, 300, 125, 125);
-  stroke(1);
-  fill(lighterGrey);
-  noStroke();
-  ellipse(250, 300, 225, 225);
-  stroke(1);
-  fill(green);
-  noStroke();
-  ellipse(250, 300, 125, 125);
-  stroke(1);
-  
-  fill(lighterGreen);
-  //rect(109, 275, 50, 40);
-  //rect(340, 276, 50, 40);
-  //rect(210, 265, 85, 65);
-  //rect(232, 422, 30, 30);
-  //rect(232, 147, 30, 30);
-
-  triangle(215, 272, 215, 322, 244, 298);
-  rect( 254, 272, 15, 50, 6);
-  rect( 274, 272, 15, 50, 6);
-
-  triangle(152, 283, 152, 307, 137, 296);
-  triangle(137, 283, 137, 307, 122, 296);
-  rect( 117, 283, 5, 25, 6);
-
-  triangle(345, 283, 345, 307, 363, 296);
-  triangle(363, 283, 363, 307, 378, 296);
-  rect( 378, 283, 5, 25, 6);
-  noStroke();
-  rect( 245, 150, 5, 25, 6);
-  rect( 235, 160, 25, 5, 6);
-  stroke(1);
-
-fill(orange);
-  noStroke();
-  ellipse(250,357,30,30);
-  rect(247.5, 370, 5, 30);
-  stroke(1);
-  line(235, 374, 247, 382);
-  line(262, 374, 252, 382);
-  line(240, 408, 247, 399);
-  line(252, 399, 258 ,408); 
-  
-  fill(coolpurple);
-  rect(113, 110, 275, 5, 10);
-  fill(lightPurple);
-  
-  
-  
-  println ("Mousex:", mouseX, "\tMouseY:", mouseY);
-  
-  if (play)
-    song[currentSong].play();
-  else
-    song[currentSong].pause();
-
- 
-for (int i = 0; i < song[currentSong].bufferSize() - 1; i++)
-  {
-  }
-  float posx = map(song[currentSong].position(), 115, song[currentSong].length(), 115, 385);
-  ellipse(posx, 112, 20, 20);
 }
 
-void mousePressed () {
-  quitButtonMouseClicked();
-}
-  
-  void keyPressed(){
-    quitButtonMouseClicked();
-  if (key == 'n' || key == 'N') { // Next-Back code
- if (song[currentSong]. isPlaying() ){
-   song[currentSong].pause();
-   song[currentSong].rewind();
-   if (currentSong == numberOfSong - 1){
-     currentSong = currentSong - (numberOfSong -1);
-   }else{
-   currentSong = currentSong + 1;
-   }
- 
-   println(currentSong);
-    song[currentSong].play();
- }else{
-   if (currentSong == numberOfSong - 1){
- currentSong = currentSong - (numberOfSong);
-   }
- currentSong = currentSong +1;
- println(currentSong);
-}
-}
-
- //
- if (key == 'b' || key == 'B') { // Next-Back code
- if ( song[currentSong].isPlaying() ) {
-      song[currentSong].pause();
-   song[currentSong].rewind();
-      if ( currentSong == numberOfSong - numberOfSong ) {
-        currentSong = numberOfSong - 1;
-      } else {
-        currentSong -= 1; // Equivalent code: currentSong = currentSong - 1
-      }
-      println(currentSong);
-      song[currentSong].play();
-    } else {
-      song[currentSong].rewind();
-      if ( currentSong == numberOfSong - numberOfSong ) {
-        currentSong = numberOfSong - 1;
-      } else {
-        currentSong -= 1;
-      }
-      println(currentSong);
-    }
-  } 
-  //
-  if (key == 'p' || key == 'P') {
+void keyPressed() {
+  if ( key == 'p' || key == 'P' ) { //Caps lock can be on
     if ( song[currentSong].isPlaying() ) {
       song[currentSong].pause();
     } else if ( song[currentSong].position() == song[currentSong].length() ) {
@@ -193,4 +85,75 @@ void mousePressed () {
       song[currentSong].play();
     }
   }
+  //
+  if (key == 's' || key == 'S') {
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+      song[currentSong].rewind();
+    } else { //Song is not Playing
+      song[currentSong].rewind();
+    }
+  }
+  //
+  if ( key == 'l' || key == 'L' ) song[currentSong].loop(loopNum);//Single line IF
+  //"L" Automatically loops the song, and starts playing from the beginning
+  //
+  if ( key == 'f' || key == 'F') song[currentSong].skip(1000); // skip forward 1 second (1000 milliseconds), single IF Line
+  if ( key == 'r' || key == 'R') song[currentSong].skip(-1000); // skip backward 1 second (1000 milliseconds), single IF Line
+  //
+  // Debugging for 
+  println( "\nSong Position: ", "\t\t\t\t", song[currentSong].position(), "milliseconds" );
+  println( "Song Position:", (song[currentSong].position()/1000)/60, "minutes\t", (song[currentSong].position()/1000)-((song[currentSong].position()/1000)/60 * 60), "seconds" );
+  //
+  if (key == 'n' || key == 'N') { //Next-Back Code
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+      song[currentSong].rewind();
+      if ( currentSong == numberOfSongs - 1) {
+        currentSong = currentSong - (numberOfSongs-1);
+      } else {
+        currentSong = currentSong + 1;
+      }
+      println(currentSong);
+      song[currentSong].play();
+    } else {
+      if ( currentSong == numberOfSongs - 1) {
+        currentSong = currentSong - (numberOfSongs);
+      }
+      currentSong = currentSong + 1;
+      println(currentSong);
+    }
+  } 
+  //
+  if (key == 'b' || key == 'B') { //Next-Back Code
+    if ( song[currentSong].isPlaying() ) {
+      song[currentSong].pause();
+      song[currentSong].rewind();
+      if ( currentSong == numberOfSongs - numberOfSongs ) {
+        currentSong = numberOfSongs - 1;
+      } else {
+        currentSong -= 1; // Equivalent code: currentSong = currentSong - 1
+      }
+      println(currentSong);
+      song[currentSong].play();
+    } else {
+      song[currentSong].rewind();
+      if ( currentSong == numberOfSongs - numberOfSongs ) {
+        currentSong = numberOfSongs - 1;
+      } else {
+        currentSong -= 1;
+      }
+      println(currentSong);
+    }
+  } 
+  //
+  if (key == 'q' || key == 'Q') { //Quit Code
+    soundEffect[0].play();
+    soundEffect[0].rewind();
+    //delay(2800);
+    exit();
+  }
+}
+
+void mousePressed() {
 }
