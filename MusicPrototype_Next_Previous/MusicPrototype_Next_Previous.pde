@@ -11,12 +11,6 @@ color green = #3FFA03;
 color lighterGreen = #45E810;
 color black = #171A17;
 color lighterGrey = #1F211F; 
-color grey = #3E403D;
-color coolpurple = #67096C;
-color lightPurple = #D651DE;
-color white = #FFFFFF;
-color orange = #F0551D;
-color lightBlue = #23F5D7;
 
 color bColor = color(500, 500, 500);
 
@@ -30,15 +24,16 @@ boolean play;
 
 
 void setup () {
-  size(500, 600);
+  size(500, 500);
+//full screen
 
   minim = new Minim(this);
 
   minim = new Minim(this);
-  song[0] = minim.loadFile("Tiny_Spaceship.mp3");
-  song[1] = minim.loadFile("Edison.mp3");
-  song[2] = minim.loadFile("Sweeney.mp3");
-  song[3] = minim.loadFile("Metal.mp3");
+  song[0] = minim.loadFile("Cold_Morning.mp3");
+  song[1] = minim.loadFile("End_of_the_Rainbow.mp3");
+  song[2] = minim.loadFile("Every_Step.mp3");
+  song[3] = minim.loadFile("Keep_Dreaming.mp3");
 
   //String[] fontList = PFont.list(); 
   println("Start of Console");
@@ -59,7 +54,7 @@ void draw() {
   noStroke();
   rect(53, 95, 400, 400, 45);
   stroke(1);
-  fill(grey);
+
   ellipse(250, 300, 350, 350);
   fill(green);
   noStroke();
@@ -101,10 +96,10 @@ void draw() {
 
   rect( 235, 435, 25, 5, 6);
   
-  fill(lightBlue);
+
   rect(203, 325, 100, 100);
   
-  fill(white);
+
   noStroke();
   ellipse(230, 420, 50, 10);
   ellipse(240, 420, 50, 10);
@@ -115,7 +110,7 @@ void draw() {
   ellipse(290, 420, 20, 10);
   stroke(1);
   
-  fill(orange);
+
   noStroke();
   ellipse(250,357,30,30);
   rect(247.5, 370, 5, 30);
@@ -125,9 +120,9 @@ void draw() {
   line(240, 408, 247, 399);
   line(252, 399, 258 ,408); 
   
-  fill(coolpurple);
+
   rect(113, 110, 275, 5, 10);
-  fill(lightPurple);
+
   
   
 
